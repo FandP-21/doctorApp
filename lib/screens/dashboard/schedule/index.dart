@@ -46,11 +46,11 @@ class _ScheduleState extends State<Schedule> {
       "Authorization": "Bearer " + token
     }, body: {
       "doctor": id,
-      // "date": DateTime.now().year.toString() +
-      //     '-' +
-      //     DateTime.now().month.toString() +
-      //     '-' +
-      //     date.toString(),
+      "date": DateTime.now().year.toString() +
+          '-' +
+          DateTime.now().month.toString() +
+          '-' +
+          date.toString(),
     });
     setState(() => doctorAppointments = jsonDecode(response.body));
     setState(() => loading = false);

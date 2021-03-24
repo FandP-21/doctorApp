@@ -137,12 +137,12 @@ class _SignInState extends State<SignIn> {
         } else {
           Fluttertoast.showToast(msg: "Verifying google account");
           this.handleSignIn();
-          /*Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-                builder: (_) => Dashboard(
-                  loading: false,
-                )),
-          );*/
+          // Navigator.of(context).pushReplacement(
+          //   MaterialPageRoute(
+          //       builder: (_) => Dashboard(
+          //         loading: false,
+          //       )),
+          // );
         }
       } else {
         _scaffoldKey.currentState.showSnackBar(SnackBar(

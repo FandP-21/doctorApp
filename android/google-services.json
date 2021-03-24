@@ -31,6 +31,22 @@
           }
         },
         {
+          "client_id": "509009856053-eu7qvu5o0323brhsbs5om9j715csc5jg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thcDoctorMobile",
+            "certificate_hash": "add2abf7f41636d4d4b3e419c9409d81f115e4e9"
+          }
+        },
+        {
+          "client_id": "509009856053-fj62vgjq78aqhl5dt6cjo3vi2uhfcauh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thcDoctorMobile",
+            "certificate_hash": "71af380b8e74cd815076826806a3ed2c105eab69"
+          }
+        },
+        {
           "client_id": "509009856053-hsade02h2seg8lgl4h0ghl66tsjs8e06.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -44,6 +60,14 @@
           "android_info": {
             "package_name": "com.example.thcDoctorMobile",
             "certificate_hash": "83450e1436408ed02df7de58ef06ed4737e17e6b"
+          }
+        },
+        {
+          "client_id": "509009856053-mcu21plqda9ngou5f95o93b69avgdpll.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thcDoctorMobile",
+            "certificate_hash": "e4b4d1ce9ee96a1bda5201493cd18a8d133f5f88"
           }
         },
         {
@@ -81,6 +105,30 @@
           "android_info": {
             "package_name": "com.thcMobile.android",
             "certificate_hash": "0487366b3de67a36488d3fc65615074ef64ee3c0"
+          }
+        },
+        {
+          "client_id": "509009856053-5ap2bs5lreq7mqf8qll5lj6upnj3hmf2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thcMobile.android",
+            "certificate_hash": "add2abf7f41636d4d4b3e419c9409d81f115e4e9"
+          }
+        },
+        {
+          "client_id": "509009856053-7c6gqgkckvelbqkf6njqndo7fsc6b3j3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thcMobile.android",
+            "certificate_hash": "e4b4d1ce9ee96a1bda5201493cd18a8d133f5f88"
+          }
+        },
+        {
+          "client_id": "509009856053-7tv35h5886letqa3s2bcdju5nmf2p0j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thcMobile.android",
+            "certificate_hash": "71af380b8e74cd815076826806a3ed2c105eab69"
           }
         },
         {

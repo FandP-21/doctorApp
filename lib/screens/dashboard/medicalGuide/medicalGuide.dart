@@ -3,6 +3,10 @@ import 'package:thcDoctorMobile/components/backButtonWhite.dart';
 import 'package:thcDoctorMobile/components/headerText.dart';
 import 'package:thcDoctorMobile/components/searchTextInput.dart';
 import 'package:thcDoctorMobile/helpers/store.dart';
+import 'package:thcDoctorMobile/screens/dashboard/medicalGuide/pharmacyCentre.dart';
+import 'package:thcDoctorMobile/screens/dashboard/medicalGuide/pharmacylist.dart';
+
+import 'hospitals.dart';
 
 class MedicalGuide extends StatefulWidget {
   @override
@@ -27,7 +31,7 @@ class _MedicalGuideState extends State<MedicalGuide> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment:  CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     BackButtonWhite(onPressed: () => {}),
                     SizedBox(),
@@ -41,8 +45,8 @@ class _MedicalGuideState extends State<MedicalGuide> {
             ),
             Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(),
                 Row(
@@ -50,55 +54,79 @@ class _MedicalGuideState extends State<MedicalGuide> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width*0.29,
+                      width: MediaQuery.of(context).size.width * 0.29,
                       height: 60,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: blue,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
-                        "HOSPITALS",
-                        style: TextStyle(
-                          color: white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => SelectHospital(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "HOSPITALS",
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width*0.29,
+                      width: MediaQuery.of(context).size.width * 0.29,
                       height: 60,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: blue,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => pharmacyCentre(),
+                            ),
+                          );
+                        },
+                        child: Text(
                         "DIAGNOSTICS",
                         style: TextStyle(
                           color: white,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
+                      )),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width*0.29,
+                      width: MediaQuery.of(context).size.width * 0.29,
                       height: 60,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: blue,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => Pharmacydatascreen(),
+                            ),
+                          );
+                        },
+                        child:Text(
                         "PHARMACIES",
                         style: TextStyle(
                           color: white,
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
+                      )),
                     ),
                   ],
                 )
