@@ -75,6 +75,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   bool loading = true;
   List<dynamic> doctorAppointments = [];
   bool offline = false;
+
   @override
   void initState() {
     super.initState();
@@ -229,7 +230,6 @@ class _DashboardBodyState extends State<DashboardBody> {
                 SizedBox(height: 15),
                 SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-
                     child:
                         Row(mainAxisSize: MainAxisSize.max, children: <Widget>[
                       iconBox('Medical Guide', 'assets/images/guide.png', () {
@@ -380,9 +380,9 @@ class _DashboardBodyState extends State<DashboardBody> {
       child: GestureDetector(
           onTap: onPressed,
           child: Container(
-            height: 140,
+            height: MediaQuery.of(context).size.height * 0.17,
             width: MediaQuery.of(context).size.width * 0.28,
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),

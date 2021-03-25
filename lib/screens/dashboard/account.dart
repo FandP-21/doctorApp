@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:thcDoctorMobile/components/searchTextInput.dart';
 import 'package:thcDoctorMobile/helpers/store.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -17,6 +20,8 @@ import 'package:thcDoctorMobile/screens/dashboard/manageHospitalSchedule.dart';
 import 'package:thcDoctorMobile/screens/dashboard/manageIndependentSChedule.dart';
 import 'package:thcDoctorMobile/screens/dashboard/setBookingLimit.dart';
 import 'package:thcDoctorMobile/screens/loader.dart';
+
+import 'manageProfile.dart';
 
 class Account extends StatefulWidget {
   Account({Key key, this.title}) : super(key: key);
@@ -148,7 +153,11 @@ class _AccountState extends State<Account> {
                               AccountListItem(
                                   last: false,
                                   title: 'Manage profile',
-                                  onPressed: () {}),
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (_) => ManageProfile()));
+                                  }),
                               AccountListItem(
                                   last: true,
                                   title: 'Change password',
@@ -169,10 +178,16 @@ class _AccountState extends State<Account> {
                                   last: false,
                                   title: 'Share application',
                                   onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                          builder: (_) => LinkedDevices()),
-                                    );
+                                    if (Platform.isAndroid) {
+                                      Share.share(
+                                          'Share thcDoctorMobile App https://play.google.com/store/apps/details?'
+                                              'id=com.example.thcDoctorMobile',
+                                          subject: 'thcDoctorMobile App');
+                                    } else if (Platform.isIOS) {
+                                      Share.share(
+                                          'Share thcDoctorMobile https://apps.apple.com/in/app/thcDoctorMobile/id28488222',
+                                          subject: 'thcDoctorMobile App');
+                                    }
                                   }),
                               AccountListItem(
                                   last: true,
