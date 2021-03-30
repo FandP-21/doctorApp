@@ -53,7 +53,9 @@ class _PatientBodyState extends State<PatientBody> {
       if (mounted)
         setState(() {
           loading = false;
+          print(response.body);
           _patientInfo = jsonDecode(response.body);
+
         });
     } on SocketException {
       _scaffoldKey.currentState.showSnackBar(
