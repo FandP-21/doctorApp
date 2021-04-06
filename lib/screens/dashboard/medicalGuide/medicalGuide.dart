@@ -113,11 +113,13 @@ class _MedicalGuideState extends State<MedicalGuide> {
                       ),
                       child: GestureDetector(
                         onTap: () {
+/*
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => Pharmacydatascreen(),
                             ),
                           );
+*/
                         },
                         child:Text(
                         "PHARMACIES",
