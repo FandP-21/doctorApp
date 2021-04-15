@@ -216,7 +216,9 @@ class _SelectHospitalState extends State<SelectHospital> {
     return Material(
         color: Colors.transparent,
         child: GestureDetector(
-            onTap: () => setHospital(hospital),
+            onTap: () =>
+
+                setHospital(hospital),
             child: Container(
               width: MediaQuery.of(context).size.width - 50,
               padding: EdgeInsets.symmetric(vertical: 15),

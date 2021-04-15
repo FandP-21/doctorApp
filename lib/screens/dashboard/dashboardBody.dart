@@ -214,8 +214,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                 Provider.of<UserModel>(context, listen: false)
                                     .setOffline(false);
                               else
-                                Provider.of<UserModel>(context, listen: false)
-                                    .setOffline(true);
+                                gooffline();
                             },
                             child: Container(
                                 padding: EdgeInsets.all(10),
@@ -284,6 +283,39 @@ class _DashboardBodyState extends State<DashboardBody> {
                           ),
               ]),
         ))));
+  }
+  Future<Null> gooffline() async {
+    setState(() => loading = true);
+    String url = Provider.of<UserModel>(context, listen: false).baseUrl;
+    String id = Provider.of<UserModel>(context, listen: false).id;
+    String token = Provider.of<UserModel>(context, listen: false).token;
+    var response;
+    Map<String, dynamic> body = {
+      "hospital": '1',
+      "doctor": id,
+    };
+
+      try {
+        var response = await http.post(url + 'disable-doctor/',
+            body: body,
+          /*  headers: {
+          "Content-Type": "application/json",
+          "Connection": 'keep-alive',
+          "Authorization": "Bearer " + token
+        }*/
+        );
+        print(response.body);
+        setState(() {
+          loading = false;
+        });
+        Provider.of<UserModel>(context, listen: false)
+            .setOffline(true);
+        _scaffoldKey.currentState
+            .showSnackBar(SnackBar(content: Text(jsonDecode(response.body))));
+      } catch (e) {
+        _scaffoldKey.currentState.showSnackBar(SnackBar(content: Text(e)));
+      }
+
   }
 
   Widget appointmentBox(Appointment appointment) {

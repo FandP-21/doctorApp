@@ -87,21 +87,21 @@ class _MedicalGuideState extends State<MedicalGuide> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => pharmacyCentre(),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => pharmacyCentre(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "DIAGNOSTICS",
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
                             ),
-                          );
-                        },
-                        child: Text(
-                        "DIAGNOSTICS",
-                        style: TextStyle(
-                          color: white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      )),
+                          )),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.29,
@@ -112,7 +112,7 @@ class _MedicalGuideState extends State<MedicalGuide> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: GestureDetector(
-                        onTap: () {
+                          onTap: () {
 /*
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -120,15 +120,15 @@ class _MedicalGuideState extends State<MedicalGuide> {
                             ),
                           );
 */
-                        },
-                        child:Text(
-                        "PHARMACIES",
-                        style: TextStyle(
-                          color: white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      )),
+                          },
+                          child: Text(
+                            "PHARMACIES",
+                            style: TextStyle(
+                              color: white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )),
                     ),
                   ],
                 )
