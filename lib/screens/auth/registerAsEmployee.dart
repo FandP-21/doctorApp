@@ -82,6 +82,7 @@ class _RegisterAsEmployeeState extends State<RegisterAsEmployee> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
+        resizeToAvoidBottomInset: false,
         body: LoadingOverlay(
           child: SafeArea(
               child: Container(

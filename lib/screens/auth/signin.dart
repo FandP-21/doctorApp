@@ -120,6 +120,8 @@ class _SignInState extends State<SignIn> {
             .setName(responseJson['first_name']);
         await prefs.setString("first_name", responseJson['first_name']);
 
+        await Provider.of<UserModel>(context, listen: false)
+            .setHospitalId(responseJson['hospital_id'].toString());
         var authResponse = await http.get(
             "https://thc2020.herokuapp.com/doctor/${responseJson['doctor_id'].toString()}/",
             headers: {

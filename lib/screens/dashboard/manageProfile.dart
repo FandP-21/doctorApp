@@ -44,7 +44,7 @@ class _ManageProfileState extends State<ManageProfile> {
 
     response = await dio
         .get(
-      url + "patient-list/" + id + '/',
+      url + "patient-list/" + '1' + '/',
       options: Options(
           followRedirects: false,
           validateStatus: (status) {

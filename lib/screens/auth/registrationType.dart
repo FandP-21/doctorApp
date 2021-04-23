@@ -79,13 +79,14 @@ class _RegistrationTypeState extends State<RegistrationType> {
       "location": null,
       "bio_info_on_specialization": null,
       "area_of_specialization": [],
-      "mdcn_license": null
+      "mdcn_license": null,
+      "is_independent": true.toString(),
     };
 
     if (practice == true && independent == false) {
       setState(() => loading = true);
       var response = await http.patch(url + 'doctor/' + id, body: {
-        "is_independent": false,
+        "is_independent": false.toString(),
       }, headers: {
         "Connection": 'keep-alive',
         "Authorization": "Bearer " + token
@@ -103,7 +104,7 @@ class _RegistrationTypeState extends State<RegistrationType> {
     } else if (independent == true && practice == false) {
       setState(() => loading = true);
       var response = await http.patch(url + 'doctor/' + id, body: {
-        "is_independent": true,
+        "is_independent": true.toString(),
       }, headers: {
         "Connection": 'keep-alive',
         "Authorization": "Bearer " + token
@@ -226,6 +227,8 @@ class _RegistrationTypeState extends State<RegistrationType> {
           .setIndependentId(responseJson['doctor_id'].toString());
       await Provider.of<UserModel>(context, listen: false)
           .setIndependentMainId(responseJson['id'].toString());
+      await Provider.of<UserModel>(context, listen: false)
+          .setHospitalId(responseJson['hospital_id'].toString());
 
       var responseX = await http
           .patch(_baseUrl + 'doctor/' + responseJson['doctor_id'] + '/', body: {
@@ -321,7 +324,7 @@ class _RegistrationTypeState extends State<RegistrationType> {
                             SizedBox(height: 10),
                             ButtonBlue(
                                 title: 'NEXT',
-                                onPressed: practice != false &&
+                                onPressed: practice != false ||
                                         independent != false
                                     ? setRegistrationType
                                     : () => _scaffoldKey.currentState

@@ -10,6 +10,8 @@ import 'package:thcDoctorMobile/components/authPhoneInput.dart';
 import 'package:thcDoctorMobile/helpers/sizeCalculator.dart';
 import 'package:thcDoctorMobile/components/buttonBlue.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:thcDoctorMobile/screens/auth/components/verify.dart';
+import 'package:thcDoctorMobile/screens/auth/components/verifyEnterOtp.dart';
 import 'package:thcDoctorMobile/screens/auth/registrationType.dart';
 import 'package:thcDoctorMobile/screens/auth/signin.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -123,6 +125,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   }
 
   Future<dynamic> loginFn(body) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     String _baseUrl = "https://thc2020.herokuapp.com/";
     var responseJson;
     Response response;
@@ -177,6 +180,13 @@ class _SignUpBodyState extends State<SignUpBody> {
             )),
       ));
     } else {
+      await prefs.setString('fnamee', firstName.text);
+      await prefs.setString('lnamee', lastName.text);
+      await prefs.setString('emaill', email.text);
+      await prefs.setString('unamee', firstName.text);
+      await prefs.setString('phonee', phoneNo.text);
+      await prefs.setString('password', password.text);
+
       if (responseJson['patient_id'] == null &&
           responseJson['doctor_id'] != null) {
         Provider.of<UserModel>(context, listen: false)
@@ -187,7 +197,8 @@ class _SignUpBodyState extends State<SignUpBody> {
             .setToken(responseJson['access_token']);
         Provider.of<UserModel>(context, listen: false)
             .setName(responseJson['first_name']);
-
+        Provider.of<UserModel>(context, listen: false)
+            .setHospitalId(responseJson['hospital_id'].toString());
         var authResponse = await http.get(
             "https://thc2020.herokuapp.com/doctor/${responseJson['doctor_id'].toString()}/",
             headers: {
@@ -278,6 +289,8 @@ class _SignUpBodyState extends State<SignUpBody> {
       Fluttertoast.showToast(msg: "Account sync success");
       setState(() => loading = false);
       Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => VerifyBody()));
+/*      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
               builder: (context) => RegistrationType(
@@ -286,7 +299,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   passedFirstName: firstName.text,
                   passedLastName: lastName.text,
                   passedUsername: firstName.text,
-                  passedPhoneNumber: phoneNo.text)));
+                  passedPhoneNumber: phoneNo.text)));*/
     } else {
       Fluttertoast.showToast(msg: "Account sync fail");
     }

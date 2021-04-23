@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thcDoctorMobile/components/headerText.dart';
 import 'package:thcDoctorMobile/components/subText.dart';
 import 'package:thcDoctorMobile/helpers/sizeCalculator.dart';
@@ -14,9 +15,17 @@ class SetNotifications extends StatefulWidget {
 }
 
 class _SetNotificationsState extends State<SetNotifications> {
+  String firstName;
+  String lastName;
+  String email;
+  String phoneNo;
+  String username;
+  String password;
+
   @override
   void initState() {
     super.initState();
+    getData();
   }
 
   @override
@@ -50,11 +59,16 @@ class _SetNotificationsState extends State<SetNotifications> {
                         SizedBox(height: sizer(false, 54, context)),
                         ButtonBlue(
                             onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (_) =>
-                                        RegistrationType(title: '')),
-                              );
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegistrationType(
+                                          passedEmail: email,
+                                          passedPassword: password,
+                                          passedFirstName: firstName,
+                                          passedLastName: lastName,
+                                          passedUsername: firstName,
+                                          passedPhoneNumber: phoneNo)));
                             },
                             title: 'NOTIFY ME'),
                         SizedBox(height: sizer(false, 24, context)),
@@ -62,11 +76,21 @@ class _SetNotificationsState extends State<SetNotifications> {
                             color: Colors.transparent,
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (_) =>
-                                          RegistrationType(title: '')),
-                                );
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => RegistrationType(
+                                            passedEmail: email,
+                                            passedPassword: password,
+                                            passedFirstName: firstName,
+                                            passedLastName: lastName,
+                                            passedUsername: firstName,
+                                            passedPhoneNumber: phoneNo)));
+                                // Navigator.of(context).push(
+                                //   MaterialPageRoute(
+                                //       builder: (_) =>
+                                //           RegistrationType(title: '')),
+                                // );
                               },
                               child: SubText(
                                   title: 'Don\'t send Notifications',
@@ -74,5 +98,15 @@ class _SetNotificationsState extends State<SetNotifications> {
                             ))
                       ],
                     )))));
+  }
+
+  void getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    firstName = (prefs.getString('fnamee') ?? '');
+    lastName = (prefs.getString('lnamee') ?? '');
+    email = (prefs.getString('emaill') ?? '');
+    username = (prefs.getString('unamee') ?? '');
+    phoneNo = (prefs.getString('phonee') ?? '');
+    password = (prefs.getString('password') ?? '');
   }
 }

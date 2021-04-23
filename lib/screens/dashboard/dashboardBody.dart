@@ -288,10 +288,10 @@ class _DashboardBodyState extends State<DashboardBody> {
     setState(() => loading = true);
     String url = Provider.of<UserModel>(context, listen: false).baseUrl;
     String id = Provider.of<UserModel>(context, listen: false).id;
-    String token = Provider.of<UserModel>(context, listen: false).token;
+    String hospitalid = Provider.of<UserModel>(context, listen: false).hospitalid;
     var response;
     Map<String, dynamic> body = {
-      "hospital": '1',
+      "hospital": hospitalid,
       "doctor": id,
     };
 

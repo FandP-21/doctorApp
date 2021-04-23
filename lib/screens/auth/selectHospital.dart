@@ -56,6 +56,8 @@ class _SelectHospitalState extends State<SelectHospital> {
     String url = Provider.of<UserModel>(context, listen: false).baseUrl;
     String id = Provider.of<UserModel>(context, listen: false).id;
     String token = Provider.of<UserModel>(context, listen: false).token;
+    await Provider.of<UserModel>(context, listen: false)
+        .setHospitalId(hospital.id.toString());
 
     setState(() {
       hospitalsLoading = true;

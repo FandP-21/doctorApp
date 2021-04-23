@@ -66,8 +66,11 @@ class _VerifyEnterOtpBodyState extends State<VerifyEnterOtpBody> {
       });
       final User currentUser = _auth.currentUser;
       assert(user.uid == currentUser.uid);
-      Navigator.of(context).push(
+/*      Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => RegistrationType()),
+      );*/
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => RegisterSuccess()),
       );
       //  Navigator.of(context).pushReplacementNamed('/homepage');
     } catch (e) {
@@ -171,7 +174,7 @@ class _VerifyEnterOtpBodyState extends State<VerifyEnterOtpBody> {
         SizedBox(height: sizer(false, 229, context)),
         ButtonBlue(
             onPressed: () {
-              //   preVerify();
+                // preVerify();
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => RegisterSuccess()),
               );

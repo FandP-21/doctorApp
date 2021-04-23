@@ -16,10 +16,13 @@ class UserModel extends ChangeNotifier {
   bool _offline;
   bool _ratesVisible;
   String _doctor = '';
+  String _hospitalid = '';
 
   UserModel() {
     getData();
   }
+
+  get hospitalid => _hospitalid;
 
   get id => _id;
 
@@ -61,6 +64,7 @@ class UserModel extends ChangeNotifier {
     bool offline = prefs.getBool("offline") ?? false;
     bool ratesVisible = prefs.getBool("ratesVisible") ?? true;
     String doctor = prefs.getString('doctor') ?? '';
+    String hospitalId = prefs.getString('hospital_id') ?? '';
 
     _id = id;
     _independentId = independentId;
@@ -74,6 +78,7 @@ class UserModel extends ChangeNotifier {
     _offline = offline;
     _ratesVisible = ratesVisible;
     _doctor = doctor;
+    _hospitalid = hospitalId;
     notifyListeners();
   }
 
@@ -111,7 +116,12 @@ class UserModel extends ChangeNotifier {
     notifyListeners();
     return prefs.setString('main_id', value);
   }
-
+  Future<bool> setHospitalId(String value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    _hospitalid = value;
+    notifyListeners();
+    return prefs.setString('hospital_id', value);
+  }
   Future<bool> setIndependentMainId(String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     _independentMainId = value;
