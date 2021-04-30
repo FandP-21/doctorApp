@@ -79,7 +79,7 @@ class Pharmacy {
     rating = json['rating'] ?? 'N/A';
     officeAddress = json['office_address'] ?? 'N/A';
     cacNumber = json['cac_number'] ?? 'N/A';
-    photo = 'http://thc2020.herokuapp.com' + json['photo'] ?? '';
+    photo = 'https://thc2020.herokuapp.com' + json['photo'] ?? '';
     phoneNumber = json['phone_number'] ?? 'N/A';
     isActive = json['is_active'];
     isSetup = json['is_setup'];

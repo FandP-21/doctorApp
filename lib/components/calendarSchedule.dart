@@ -183,13 +183,16 @@ class _CircularCheckState extends State<CircularCheck> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
       widget.last
           ? GestureDetector(
               onTap: updateState,
               child: Container(
                 height: 33,
                 width: 33,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: widget.selected ?? checked
@@ -220,7 +223,7 @@ class _CircularCheckState extends State<CircularCheck> {
               widget.time,
               style: TextStyle(
                 color: Color.fromRGBO(130, 138, 149, 1),
-                fontSize: 12,
+                fontSize: 10,
                 fontFamily: 'Metropolis',
                 fontWeight: FontWeight.normal,
               ),

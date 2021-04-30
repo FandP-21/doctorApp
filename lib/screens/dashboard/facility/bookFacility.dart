@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:thcDoctorMobile/components/headerText.dart';
 import 'package:thcDoctorMobile/helpers/sizeCalculator.dart';
 import 'package:thcDoctorMobile/components/buttonBlue.dart';
 import 'package:thcDoctorMobile/components/backButtonWhite.dart';
 import 'package:thcDoctorMobile/helpers/store.dart';
+import 'package:thcDoctorMobile/models/facilitydata.dart';
+import 'package:thcDoctorMobile/provider/user.dart';
 import 'package:thcDoctorMobile/screens/dashboard/dashboardBody.dart';
 import '../../components/menuDropdown.dart';
 import 'package:thcDoctorMobile/components/multiInput.dart';
@@ -13,9 +16,8 @@ import '../../components/appointmentSuccess.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 
 class BookFacility extends StatefulWidget {
-  BookFacility({
-    Key key,
-  }) : super(key: key);
+  final FacilityData facility;
+  BookFacility({@required this.facility});
 
   @override
   _BookFacilityState createState() => _BookFacilityState();
@@ -33,13 +35,17 @@ class _BookFacilityState extends State<BookFacility> {
   String selected = '';
   bool _autoValidate = false;
   bool value = false;
+  bool hospitalsLoading = false;
   String apartment = 'Operating theater';
   String card = 'Select card';
   CalendarController _controller = new CalendarController();
   @override
   void initState() {
     super.initState();
+
   }
+
+
 
   void _onDaySelected(DateTime day, List events, List holidays) {
     print('CALLBACK: _onDaySelected');
